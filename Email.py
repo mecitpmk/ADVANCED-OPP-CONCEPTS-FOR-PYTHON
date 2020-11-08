@@ -190,9 +190,13 @@ class System:
             print("Couldnt founded...")
     def send_ms(self):
         self.current_obj.print_contact()
-        inp = int(input("Which Contact:"))
-        mes = input("Your Message : ")
-        self.current_obj.send_message_to_contact(self.current_obj.contact[inp-1],mes)
+        if len(self.current_obj.contact) > 0
+            inp = int(input("Which Contact:"))
+            mes = input("Your Message : ")
+            self.current_obj.send_message_to_contact(self.current_obj.contact[inp-1],mes)
+        else:
+            print("Add Contact First!.")
+        
     def search_in_readed(self):
         inputs = input("Enter Message to Search")
         mes = self.current_obj.messages.search(inputs,in_readed=True)
@@ -241,11 +245,3 @@ class System:
 
 email_system = System()
 email_system.menu()
-
-
-
-
-
-    
-        
-
