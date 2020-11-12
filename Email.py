@@ -147,7 +147,7 @@ class System:
             for index,menu in enumerate(dictionary,start=1):
                 print(f"{index} - {menu}")
             inputs = int(input("What do you want to do:"))
-            self.return_menu(inputs,given_dict)()
+            self.return_menu(inputs,dictionary)()
         
     
     def log_out(self):
