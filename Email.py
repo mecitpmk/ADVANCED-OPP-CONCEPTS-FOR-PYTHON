@@ -138,19 +138,16 @@ class System:
         self.current_obj.messages.show(sended=True)
     def menu(self):
         while True:
-            dictionry= None
             if self.logged:
                 dictionary = self.logged_dict
-                normal_menu = False
             else:
                 dictionary = self.unlogged_dict
-                normal_menu = True
             # print("\nWelcome...")
             print("-------------------")
             for index,menu in enumerate(dictionary,start=1):
                 print(f"{index} - {menu}")
             inputs = int(input("What do you want to do:"))
-            self.return_menu(inputs,normal_menu=normal_menu)()
+            self.return_menu(inputs,given_dict)()
         
     
     def log_out(self):
@@ -190,7 +187,7 @@ class System:
             print("Couldnt founded...")
     def send_ms(self):
         self.current_obj.print_contact()
-        if len(self.current_obj.contact) > 0
+        if len(self.current_obj.contact) > 0:
             inp = int(input("Which Contact:"))
             mes = input("Your Message : ")
             self.current_obj.send_message_to_contact(self.current_obj.contact[inp-1],mes)
@@ -224,7 +221,7 @@ class System:
                 print(f"From user {user}  Message : {message}")
         else:
             print("Couldnt founded..")
-    def return_menu(self,given_number,normal_menu=True):
+    def return_menu(self,given_number,given_dict):
         """Returns Functions.
 
         Args:
@@ -233,14 +230,9 @@ class System:
         Returns:
             [type]: [description]
         """
-        dictionary = None
-        if normal_menu:
-            dictionary = self.unlogged_dict
-        else:
-            dictionary = self.logged_dict
-        for index,functs in enumerate(dictionary,start=1):
+        for index,functs in enumerate(given_dict,start=1):
             if index == given_number:
-                return dictionary[functs]
+                return given_dict[functs]
 
 
 email_system = System()
